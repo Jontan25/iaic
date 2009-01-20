@@ -2,10 +2,10 @@
  * 
  */
 package com.iaic.noninformedsearch;
-import problema.Problema;
+import problem.Problema;
 import problema.Nodo;
-import busqueda.BusquedaPrioridad;
-import busqueda.ColaBusqueda;
+import com.iaic.search.PrioritySearch;
+import com.iaic.search.SearchQueue;
 import java.util.Comparator;
 
 /**
@@ -23,9 +23,9 @@ import java.util.Comparator;
  * @author alberto
  *
  */
-public class CosteUniforme extends BusquedaPrioridad {
+public class UniformCost extends BusquedaPrioridad {
 	
-	public CosteUniforme(ColaBusqueda c) {
+	public UniformCost(ColaBusqueda c) {
 		colaBusqueda=c;
 	}
 	/* Esto se necesita porque al crear la cola de prioridad, hay que 
@@ -36,7 +36,7 @@ public class CosteUniforme extends BusquedaPrioridad {
 	 * (non-Javadoc)
 	 * @see busqueda.BusquedaPrioridad#getComparator(problema.Problema)
 	 */
-	public Comparator<Nodo> getComparator(Problema p) {
-		return new ComparadorGn();
+	public Comparator<Node> getComparator(Problem p) {
+		return new ComparatorGn();
 	}
 }
