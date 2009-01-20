@@ -3,14 +3,13 @@
  */
 package com.iaic.datastructures;
 import java.util.Vector;
-import problema.Nodo;
-import problema.Problema;
-import problema.Sucesor;
+import com.iaic.problem.Node;
+import com.iaic.problem.Problem;
+import com.iaic.problem.Succesor;
 /**
- * Por el momento, esta clase solo sirve para tener la función
- * expandirNodo. Esta función la necesitan todas las búsquedas,
- * así que saco factor común y luego, que la hereden.
- * @author alberto
+ * This class just has the expandsNode function. This function
+ * needs all the searches.
+ * @author jose, mario
  *
  */
 public class ExpandNode {
@@ -18,36 +17,31 @@ public class ExpandNode {
 	public ExpandNode() {}
 	
 	/**
-	 * Dado un problema con sus funciones, y un nodo de espacio
-	 * de búsqueda del mismo problema, que se supone recién sacado
-	 * de la estructura de abiertos, esta función lo expande,
-	 * creando todos sus nodos hijos, y devolviéndolos en una 
-	 * lista.
-	 * @param n El nodo que se va a expandir.
-	 * @param p El problema al que pertenece el nodo. Se necesita
-	 * porque en él se encuentra la función sucesor que creará
-	 * los estados sucesores necesarios para crear los nodos hijos.
-	 * @return Una lista de todos los nodos hijos resultado de
-	 * expandir n.
+	 * This function expands a node of the search space, creating 
+	 * all its son nodes and returning a list with them.
+	 * 
+	 * @param n The node that will be expanded.
+	 * @param p The problem. It's needed because the succesor function is on it.
+	 * @return A list with all the son nodes, result of expand n.
 	 */
-	public Vector<Nodo> expandirNodo(Nodo n, Problema p) {
-		Vector<Nodo> hijos=new Vector<Nodo>();
-		hijos.clear();//preparamos la estructura de nodos hijos
+	public Vector<Node> expandNode(Node n, Problem p) {
+		Vector<Node> sons=new Vector<Node>();
+		sons.clear(); //we prepare the son nodes structure.
 		
-		Vector<Sucesor> sucesores=p.getFunSucesor().getSucesores(n.getEstado());
-		/*con esto tenemos un vector de estados sucesores de nodo n.
-		 en cada uno, tenemos también el operador aplicado a n para llegar
-		 Ahora, de cada uno tenemos que crear un nodo y añadirlo a la lista.
+		Vector<Succesor> succesors=p.getFunSuccesor().getSuccesors(n.getState());
+		/* With this, we have a vector of succesors states of the n node.
+		 In each one, we have the applied operator to n.
+		 Then, we have to create a node and add it to the list.
 		 */
-		int numSucesores=sucesores.size();
-		//se toman antes, porque dentro del bucle se quitan
-		//nodos y el bucle no da las vueltas que debe
-		for (int i=0;i<numSucesores;i++) {
-			Sucesor s=sucesores.remove(0);
-			double gn=p.getFunCoste().calcularCoste(n.getEstado(), s.getEstado(), s.getOperador());
-			Nodo nuevoNodo=new Nodo(s.getEstado(),n,s.getOperador(),gn,n.getCosteTotal()+gn,n.getProfundidad()+1);
-			hijos.add(nuevoNodo);
+		int numSuccesors=succesors.size();
+		//we take it first, because inside of the loop we quit them.
+		
+		for (int i=0;i<numSuccesors;i++) {
+			Succesor s=succesors.remove(0);
+			double gn=p.getFunCost().calculateCost(n.getState(), s.getState(), s.getOperator());
+			Node newNode=new Node(s.getState(),n,s.getOperator(),gn,n.getTotalCost()+gn,n.getDepth()+1);
+			sons.add(newNode);
 		}
-		return hijos;
+		return sons;
 	}
 }

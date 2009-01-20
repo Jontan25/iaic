@@ -5,60 +5,45 @@ package com.iaic.datastructures;
 
 import java.util.Vector;
 
-import problema.Nodo;
+import problem.Node;
 
 /**
- * @author alberto
+ * @author jose, mario
  *
  */
 public class OpenedStack implements OpenedStructure {
 
-	Vector<Nodo> pila;
+	Vector<Node> stack;
 	
 	public OpenedStack() {
-		pila=new Vector<Nodo>();
-		pila.clear();
+		stack=new Vector<Node>();
+		stack.clear();
 	}
 	
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#agregar(problema.Nodo)
-	 */
-	public boolean agregar(Nodo n) {
-		pila.insertElementAt(n, 0);
+	public boolean add(Node n) {
+		stack.insertElementAt(n, 0);
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#agregar(java.util.Vector)
-	 */
-	public boolean agregar(Vector<Nodo> v) {
-		Vector<Nodo> a=new Vector<Nodo>();
+	public boolean add(Vector<Node> v) {
+		Vector<Node> a=new Vector<Node>();
 		a.clear();
 		a.addAll(v);
-		a.addAll(pila);
-		pila=a;
+		a.addAll(stack);
+		stack=a;
 		return true;
 	}
 
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#esVacia()
-	 */
-	public boolean esVacia() {
-		return pila.isEmpty();
+	public boolean isEmpty() {
+		return stack.isEmpty();
 	}
 
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#extraer()
-	 */
-	public Nodo extraer() {
-		return pila.remove(0);
+	public Node extract() {
+		return stack.remove(0);
 	}
 
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#numNodos()
-	 */
-	public int numNodos() {
-		return pila.size();
+	public int NodesNumber() {
+		return stack.size();
 	}
 
 }

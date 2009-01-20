@@ -6,104 +6,97 @@ import java.util.LinkedList;
 import java.util.ArrayList;
 
 /**
- * Esta clase representa un grafo de elementos del tipo E.
- * Se va a usar para representar el grafo de planetas en el problema de
- * los planetas.
- * @author alberto
+ * This class represents a graph of elements of type E.
+ * It's going tobe used for represent the graph of planets
+ * in the planets problem.
+ * @author jose, mario
  *
  */
 public class Graph<E> {
 	/**
-	 * Número máximo de nodos que tendrá el grafo.
+	 * Max number of nodes that will have the graph.
 	 */
-	private final int MAX_NODOS=256;
+	private final int MAX_NODES=256;
 	
 	/**
-	 * Un ArrayList de listas enlazadas. Cada una de esas listas enlazadas
-	 * representa los nodos adyacentes. Por ejemplo, listas[1] es una
-	 * lista enlazada con los nodos adyacentes al nodo 1.
-	 * Dentro del Nodo (NodoGrafo) está el elemento, del tipo E, y la
-	 * distancia de este elemento al nodo 1.
+	 * An ArrayList of linked lists represents the adjacents nodes.
+	 * Inside of the node (GraphNode) is the element, of type E and
+	 * the distance of this element to the 1 node.
 	 */
-	private ArrayList<LinkedList<AdjacencyNode<E>>> listas;
+	private ArrayList<LinkedList<AdjacencyNode<E>>> lists;
 	/**
-	 * Una lista de los elementos que tenemos. Me parece que se necesita.
+	 * A list of the elements.
 	 */
-	private ArrayList<E> elementos;
+	private ArrayList<E> elements;
 	/**
-	 * Número de elementos del grafo.
+	 * Number of elements on the graph.
 	 */
-	private int numElementos;
+	private int numElements;
 	/**
-	 * Número máximo de elementos. Serán los que se pasen en la constructora.
+	 * Max number of elements. 
 	 */
-	private int maxElementos;
+	private int maxElements;
 	
 	public Graph() {
-		listas=null;numElementos=0;elementos=null;maxElementos=MAX_NODOS;
+		lists=null;numElements=0;elements=null;maxElements=MAX_NODES;
 	}
 	/**
-	 * Esta constructora inicializa el arraylist para i elementos. Pero
-	 * ojo, solo inicia el arraylist, vacío. Esto significa que no contiene
-	 * ninguna lista enlazada, por lo que 
+	 * This constructor initializes the ArrayList for i elements. It doen's
+	 * have any linked list.
 	 * @param i
 	 */
 	public Graph(int i) {
-		listas= new ArrayList<LinkedList<AdjacencyNode<E>>>(i);
-		elementos=new ArrayList<E>(i);
-		numElementos=0;maxElementos=numElementos;
+		lists= new ArrayList<LinkedList<AdjacencyNode<E>>>(i);
+		elements=new ArrayList<E>(i);
+		numElements=0;maxElements=numElements;
 	}
 	/**
-	 * Este método agrega un nuevo elemento al grafo. Primero comprueba
-	 * si éste tiene capacidad para un elemento más y si no está ya en el
-	 * grafo. Después lo agrega a la lista de elementos, y crea una nueva
-	 * linkedlist vacía, para cuando se quiera agregar adyacentes a él.
-	 * @param elem El elemento que se quiere agregar al grafo.
-	 * @return True si se ha podido agregar con normalidad, False si 
-	 * no había espacio o ya existía en el grafo (el grafo no permite
-	 * elementos repetidos).
+	 * This method adds a new element to the graph. First, it checks if the
+	 * graph has capacity for one more element and if it's not in the graph.
+	 * Then, it adds to the element list and creates a new linked list empty.
+	 * 
+	 * @param elem If it has been added, False if there was no space or it 
+	 * exists in the graph.
+	 * 
+
 	 */
-	public boolean agregarElemento(E elem) {
-		if ((numElementos==maxElementos) || (elementos.contains(elem))) 
+	public boolean addElement(E elem) {
+		if ((numElements==maxElements) || (elements.contains(elem))) 
 			return false;
-		elementos.add(elem);
-		listas.add(new LinkedList<AdjacencyNode<E>>());
-		numElementos++;
+		elements.add(elem);
+		lists.add(new LinkedList<AdjacencyNode<E>>());
+		numElements++;
 		return true;		
 	}
 	/**
-	 * Se agrega una arista que une los vértices v1 y v2. Como es un grafo
-	 * no dirigido, hay que añadir las aristas v1,v2 y v2,v1.
-	 * Primero se comprueba si los dos vértices existen, ya que si no, se
-	 * debe dar error.
-	 * @param v1 Uno de los vértices de la arista.
-	 * @param v2 El otro vértice de la arista.
-	 * @param d La distancia, que es la longitud de la arista.
-	 * @return True si se puede agregar bien la arista, false en caso contrario.
+	 * @param v1 Vertex 1.
+	 * @param v2 Vertex 2.
+	 * @param d The distance, the length of the edge.
+	 * @return True If the edge can be added.
 	 */
-	public boolean agregarVertice(E v1, E v2, int d) {
-		if (!elementos.contains(v1) || !elementos.contains(v2))
+	public boolean addVertex(E v1, E v2, int d) {
+		if (!elements.contains(v1) || !elements.contains(v2))
 			return false;
-		//añadimos la arista v1,v2
-		AdjacencyNode<E> primero=new AdjacencyNode<E>(v2,d);
-		int indice=elementos.indexOf(v1);
-		listas.get(indice).add(primero);
-		//ahora añadimos la arista v2,v1
-		AdjacencyNode<E> segundo=new AdjacencyNode<E>(v1,d);
-		indice=elementos.indexOf(v2);
-		listas.get(indice).add(segundo);
+		//we add the edge v1,v2
+		AdjacencyNode<E> first=new AdjacencyNode<E>(v2,d);
+		int index=elements.indexOf(v1);
+		lists.get(index).add(first);
+		//then we add the edge v2,v1
+		AdjacencyNode<E> second=new AdjacencyNode<E>(v1,d);
+		index=elements.indexOf(v2);
+		lists.get(index).add(second);
 		return true;
 	}
 	/**
-	 * Devuelve la lista de elementos adyacentes a v
-	 * @param v El vértice del que se piden los adyacentes.
-	 * @return La lista.
+	 * Returns the list of the adjacent elements to v
+	 * @param v The vertex of the adjacents.
+	 * @return The list.
 	 */
-	public LinkedList<AdjacencyNode<E>> adyacentes(E v) {
-		int index=elementos.indexOf(v);
+	public LinkedList<AdjacencyNode<E>> adjacents(E v) {
+		int index=elements.indexOf(v);
 		if (index==-1) return null;
-		if (listas.get(index).isEmpty()) return null;
-		return listas.get(index);
+		if (lists.get(index).isEmpty()) return null;
+		return lists.get(index);
 	}
 	
 }

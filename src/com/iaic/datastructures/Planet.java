@@ -4,39 +4,39 @@
 package com.iaic.datastructures;
 
 /**
- * La representación de un planeta.
- * @author alberto
+ * The representation of a planet
+ * @author jose, mario
  *
  */
 public class Planet {
-	int idplaneta;
-	boolean destino;
+	int idplanet;
+	boolean destiny;
 	
 	public Planet() {}
 	public Planet(int i) {
-		idplaneta=i;destino=false;
+		idplanet=i;destiny=false;
 	}
 	
-	public void hacerDestino() {
-		destino=true;
+	public void makeDestiny() {
+		destiny=true;
 	}
 	
-	public boolean esDestino() {
-		return destino;
+	public boolean isDestiny() {
+		return destiny;
 	}
 	
 	public Object clone() {
-		Planet clone = new Planet(idplaneta);
-		if (destino) clone.hacerDestino();
+		Planet clone = new Planet(idplanet);
+		if (destiny) clone.makeDestiny();
 		return clone;
 	}
 	
 	public String toString() {
-		String p="p"+Integer.toString(idplaneta);
+		String p="p"+Integer.toString(idplanet);
 		return p;
 	}
 	
 	public int hashCode() {
-		return idplaneta;
+		return idplanet;
 	}
 }
