@@ -1,11 +1,9 @@
-/**
- * 
- */
+
 package com.iaic.datastructures;
 
 import java.util.Vector;
 
-import problema.Nodo;
+import com.iaic.problem.Node;
 
 /**
  * Opened nodes queue.

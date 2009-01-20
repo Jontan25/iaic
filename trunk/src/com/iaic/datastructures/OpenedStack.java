@@ -1,11 +1,9 @@
-/**
- * 
- */
+
 package com.iaic.datastructures;
 
 import java.util.Vector;
 
-import problem.Node;
+import com.iaic.problem.Node;
 
 /**
  * @author jose, mario

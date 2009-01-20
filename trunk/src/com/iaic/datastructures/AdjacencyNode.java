@@ -1,70 +1,68 @@
-/**
- * 
- */
+
 package com.iaic.datastructures;
 
 /**
- * Esta clase es para las listas enlazadas que representarán los nodos
- * adyacentes de la clase Grafo. No es más que una pareja elem,distancia.
- * @author alberto
+ * This class is for the linked lists that will represent the adjacent nodes
+ * of the Graph class.
+ * @author jose, mario
  *
  */
 public class AdjacencyNode<T> {
 	/**
-	 * El elemento del grafo.
+	 * The element of the graph
 	 */
-	private T elemento;
+	private T element;
 	/**
-	 * La distancia a la que está.
+	 * The distance
 	 */
-	private int distancia;
+	private int distance;
 	/**
-	 * Constructora por defecto, deja el nodo nulo.
+	 * Constructor by default, null node.
 	 */
 	public AdjacencyNode() {
-		elemento=null;distancia=0;
+		element=null;distance=0;
 	}
 	/**
-	 * Inicia el nodo con un elemento, y la distancia a 0.
-	 * @param elem El elemento correspondiente.
+	 * Initializes the node with an element and a 0 distance.
+	 * @param elem The element.
 	 */
 	public AdjacencyNode(T elem) {
-		elemento=elem;distancia=0;
+		element=elem;distance=0;
 	}
 	/**
-	 * Inicia el nodo con un elemento y una distancia predeterminadas.
-	 * @param elem Elemento con el que se iniciará el nodo.
-	 * @param d Distancia del elemento.
+	 * Initializes the node with an element and a default distance.
+	 * @param elem Element to initialize node.
+	 * @param d Distance of the element.
 	 */
 	public AdjacencyNode(T elem, int d) {
-		elemento=elem;distancia=d;
+		element=elem;distance=d;
 	}
 	/**
-	 * Devuelve una referencia al elemento que contiene.
-	 * @return Elemento de nodo.
+	 * Returns a reference to the contained element.
+	 * @return Element of node.
 	 */
-	public T getElemento() {
-		return elemento;
+	public T getElement() {
+		return element;
 	}
 	/**
-	 * Pone un nuevo elemento en el nodo.
-	 * @param e Nuevo elemento.
+	 * Puts a new element on the node.
+	 * @param e New element.
 	 */
-	public void setElemento(T e) {
-		elemento=e;
+	public void setElement(T e) {
+		element=e;
 	}
 	/**
-	 * Devuelve la distancia del elemento, contenida en el nodo.
-	 * @return Distancia del elemento.
+	 * Returns the distance of the element, contained in the node.
+	 * @return Distance of the element.
 	 */
-	public int getDistancia() {
-		return distancia;
+	public int getDistance() {
+		return distance;
 	}
 	/**
-	 * Cambia la distancia almacenada en el nodo.
-	 * @param d La nueva distancia.
+	 * Changes the distance in the node.
+	 * @param d New distance.
 	 */
-	public void setDistancia(int d) {
-		distancia=d;
+	public void setDistance(int d) {
+		distance=d;
 	}
 }

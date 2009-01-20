@@ -1,8 +1,6 @@
-/**
- * 
- */
+
 package com.iaic.datastructures;
-import problem.Node;
+import com.iaic.problem.Node;
 import java.util.Vector;
 
 /**
