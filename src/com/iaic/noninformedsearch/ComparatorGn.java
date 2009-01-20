@@ -1,7 +1,8 @@
 package com.iaic.noninformedsearch;
 
 import java.util.Comparator;
-import problema.Nodo;
+
+import com.iaic.problem.Node;
 
 /**
  * Comparator that is based in the cost function. It has in count

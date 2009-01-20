@@ -5,8 +5,9 @@ package com.iaic.informedsearch;
 
 import java.util.Comparator;
 
-import problema.Nodo;
-import problema.Problema;
+import com.iaic.problem.Node;
+import com.iaic.problem.Problem;
+
 import busqueda.BusquedaPrioridad;
 import busqueda.ColaBusqueda;
 
@@ -36,9 +37,9 @@ public class PrimeroElMejor extends BusquedaPrioridad {
 	 * @see busqueda.BusquedaPrioridad#getComparator(problema.Problema)
 	 */
 	@Override
-	protected Comparator<Nodo> getComparator(final Problema p) {
-		return new Comparator<Nodo>() {
-			public int compare(Nodo uno, Nodo dos) {
+	protected Comparator<Node> getComparator(final Problem p) {
+		return new Comparator<Node>() {
+			public int compare(Node uno, Node dos) {
 				Double f1 = funEvaluacion.obtenerValor(p,uno);
 				Double f2 = funEvaluacion.obtenerValor(p,dos);
 

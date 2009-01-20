@@ -4,8 +4,10 @@
 package com.iaic.noninformedsearch;
 
 import java.util.Vector;
-import problema.Nodo;
-import problema.Problema;
+
+import com.iaic.problem.Node;
+import com.iaic.problem.Problem;
+
 import busqueda.Busqueda;
 import estructurasDeDatos.ExpandeNodo;
 
@@ -26,7 +28,7 @@ import estructurasDeDatos.ExpandeNodo;
  * @author alberto
  *
  */
-public class ProfundidadLimitada extends ExpandeNodo implements Busqueda {
+public class ProfundidadLimitada extends ExpandNode implements Busqueda {
 	/**
 	 * Límite de profundidad que se podrá alcanzar en la búsqueda.
 	 */
@@ -46,8 +48,8 @@ public class ProfundidadLimitada extends ExpandeNodo implements Busqueda {
 	/* (non-Javadoc)
 	 * @see busqueda.Busqueda#busqueda(problema.Problema)
 	 */
-	public Vector<String> busqueda(Problema p) {
-		Vector<String> s=busquedalimitada(new Nodo(p.getEstadoInicial()),p);
+	public Vector<String> busqueda(Problem p) {
+		Vector<String> s=busquedalimitada(new Node(p.getEstadoInicial()),p);
 		if (esFalso(s)) return new Vector<String>();
 		return s;
 	}
@@ -61,7 +63,7 @@ public class ProfundidadLimitada extends ExpandeNodo implements Busqueda {
 	 * solución, o una solución característica para saber
 	 * que se ha llegado al fondo sin encontrar solución.
 	 */
-	private Vector<String> busquedalimitada(Nodo n, Problema p) {
+	private Vector<String> busquedalimitada(Node n, Problem p) {
 		boolean llegadoallimite=false;
 		//usaremos un flag para saber si por debajo está
 		//el límite
@@ -79,11 +81,11 @@ public class ProfundidadLimitada extends ExpandeNodo implements Busqueda {
 		//característico que nos marcará que hemos llegado
 		//al límite
 		else { //si no ocurre nada de esto, expandimos
-			Vector<Nodo> hijos = expandirNodo(n,p);
+			Vector<Node> hijos = expandirNodo(n,p);
 			//expandimos el nodo, y recorremos sus hijos
 			int numHijos=hijos.size();
 			for (int i=0;i<numHijos;i++) {
-				Nodo act=hijos.get(i);
+				Node act=hijos.get(i);
 				Vector<String> fin=busquedalimitada(act,p);
 				//para cada hijo, hacemos una llamada
 				//recursiva, porque hasta que lleguemos al

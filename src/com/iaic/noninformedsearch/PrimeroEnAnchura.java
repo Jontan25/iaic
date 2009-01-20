@@ -4,7 +4,8 @@
 package com.iaic.noninformedsearch;
 import java.util.Vector;
 
-import problema.Problema;
+import com.iaic.problem.Problem;
+
 import busqueda.Busqueda;
 import busqueda.ColaBusqueda;
 import estructurasDeDatos.ColaAbiertos;
@@ -40,8 +41,8 @@ public class PrimeroEnAnchura implements Busqueda {
 	}
 	
 	
-	public Vector<String> busqueda(Problema p) {
-		return colaBusqueda.buscar(p,new ColaAbiertos());
+	public Vector<String> busqueda(Problem p) {
+		return colaBusqueda.buscar(p,new OpenedQueue());
 	}
 
 }

@@ -4,8 +4,9 @@
 package com.iaic.informedsearch;
 import java.util.Vector;
 
-import problema.Problema;
-import problema.Nodo;
+import com.iaic.problem.Node;
+import com.iaic.problem.Problem;
+
 import busqueda.Busqueda;
 import estructurasDeDatos.ExpandeNodo;
 
@@ -22,7 +23,7 @@ import estructurasDeDatos.ExpandeNodo;
  * @author alberto
  *
  */
-public class EscaladaMaximaPendiente extends ExpandeNodo implements Busqueda {
+public class EscaladaMaximaPendiente extends ExpandNode implements Busqueda {
 	/**
 	 * Si se ha encontrado solución o no.
 	 */
@@ -38,9 +39,9 @@ public class EscaladaMaximaPendiente extends ExpandeNodo implements Busqueda {
 	 * (non-Javadoc)
 	 * @see busqueda.Busqueda#busqueda(problema.Problema)
 	 */
-	public Vector<String> busqueda(Problema p) {
+	public Vector<String> busqueda(Problem p) {
 		ultimoEstado=null;
-		Nodo actual=new Nodo(p.getEstadoInicial()),
+		Node actual=new Node(p.getEstadoInicial()),
 		     sucesor=null;
 		
 		while (true) {
@@ -63,12 +64,12 @@ public class EscaladaMaximaPendiente extends ExpandeNodo implements Busqueda {
 	 * @param p Problema.
 	 * @return El nodo con la mejor evaluación.
 	 */
-	private Nodo hijoDeMaxValor(Vector<Nodo> l,Problema p) {
+	private Node hijoDeMaxValor(Vector<Node> l,Problem p) {
 		double maximo=Double.NEGATIVE_INFINITY;
-		Nodo nodoMaximo=null;
+		Node nodoMaximo=null;
 		int total=l.size();
 		for (int i=0;i<total;i++) {
-			Nodo a=l.get(i);
+			Node a=l.get(i);
 			double valorEval=valorEscalada(p,a);
 			if (valorEval>maximo) {
 				maximo=valorEval;
@@ -88,7 +89,7 @@ public class EscaladaMaximaPendiente extends ExpandeNodo implements Busqueda {
 	 * @param n El nodo a evaluar.
 	 * @return El valor de la evaluación.
 	 */
-	private double valorEscalada(Problema p,Nodo n) {
+	private double valorEscalada(Problem p,Node n) {
 		return -1*p.getFunHeuristica().valorHeuristico(n.getEstado());
 	}
 	/**
