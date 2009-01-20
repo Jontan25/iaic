@@ -5,16 +5,18 @@ package com.iaic.search;
 
 import java.util.Vector;
 import java.util.Comparator;
+
+import com.iaic.problem.Node;
+import com.iaic.problem.Problem;
+
 import estructurasDeDatos.ColaPrioridadAbiertos;
-import problema.Problema;
-import problema.Nodo;
 
 /**
  * Class for search that use a priority queue.
  * @author jose,mario
  *
  */
-public abstract class PrioritySearch implements Common {
+public abstract class PrioritySearch implements Search {
 	/**
 	 * This is the search queue structure that is going to be used.
 	 * It can be a GraphSearch, if we want to have cycle control.

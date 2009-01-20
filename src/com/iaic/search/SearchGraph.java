@@ -23,30 +23,22 @@ public class SearchGraph extends SearchQueue {
 		closed.clear();
 	}
 	/**  
-	 * Determina si el estado de un nodo está en cerrados
-	 * Tell us is the state of a node is in the closed structure.
-	 * @param n the node.
+	 * It determines if the state of a node is in the closed structure.
+	 * @param n The node.
 	 * @return True if the state is in the closed structure.
 	 */
 	private boolean isinClosed(Node n) {
 		return closed.contains(n.getState());
 	}
-	/* (non-Javadoc)
-	 * @see busqueda.ColaBusqueda#expandirYAgregar(problema.Problema, estructurasDeDatos.EstructuraAbiertos, problema.Nodo)
-	 */
+
 	public void AddandExpand(Problem p, OpenedStructure opened, Node n) {
 		if (!isinClosed(n)) {
 			closed.add(n.getState());
 			Vector<Node> sons=expandNode(n,p);
 			opened.add(sons);
 		}
-
 	}
-	/* Añade el resetear la estructura de cerrados. Así se
-	 * pueden hacer más búsquedas sin destruir la estructura.
-	 * (non-Javadoc)
-	 * @see busqueda.ColaBusqueda#buscar(problema.Problema, estructurasDeDatos.EstructuraAbiertos)
-	 */
+
 	public Vector<String> search(Problem p, OpenedStructure opened) {
 		closed.clear();
 		return super.search(p, opened);
