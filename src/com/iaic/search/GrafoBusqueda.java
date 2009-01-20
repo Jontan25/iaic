@@ -17,7 +17,7 @@ import java.util.Vector;
  * @author alberto
  *
  */
-public class GrafoBusqueda extends ColaBusqueda {
+public class GrafoBusqueda extends SearchQueue {
 	
 	HashSet<Object> cerrados;
 	
