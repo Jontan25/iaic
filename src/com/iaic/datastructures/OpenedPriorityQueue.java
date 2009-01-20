@@ -15,46 +15,32 @@ import problema.Nodo;
  */
 public class OpenedPriorityQueue implements OpenedStructure {
 
-	private PriorityQueue<Nodo> cola;
+	private PriorityQueue<Node> queue;
 	
 	
-	public OpenedPriorityQueue(Comparator<Nodo> c) {
-		cola=new PriorityQueue<Nodo>(20,c);
-		cola.clear();
+	public OpenedPriorityQueue(Comparator<Node> c) {
+		queue=new PriorityQueue<Node>(20,c);
+		queue.clear();
 	}
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#agregar(problema.Nodo)
-	 */
-	public boolean agregar(Nodo n) {
-		return cola.add(n);
+¡
+	public boolean add(Node n) {
+		return queue.add(n);
 	}
 
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#agregar(java.util.Vector)
-	 */
-	public boolean agregar(Vector<Nodo> v) {
-		return cola.addAll(v);
+	public boolean add(Vector<Node> v) {
+		return queue.addAll(v);
 	}
 
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#esVacia()
-	 */
-	public boolean esVacia() {
-		return cola.isEmpty();
+	public boolean isEmpty() {
+		return queue.isEmpty();
 	}
 
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#extraer()
-	 */
-	public Nodo extraer() {
-		return cola.poll();
+	public Node extract() {
+		return queue.poll();
 	}
 
-	/* (non-Javadoc)
-	 * @see estructurasDeDatos.EstructuraAbiertos#numNodos()
-	 */
-	public int numNodos() {
-		return cola.size();
+	public int NodesNumber() {
+		return queue.size();
 	}
 
 }
