@@ -9,7 +9,7 @@ import java.util.Comparator;
 import com.iaic.problem.Node;
 import com.iaic.problem.Problem;
 
-import estructurasDeDatos.ColaPrioridadAbiertos;
+import com.iaic.datastructures.OpenedPriorityQueue;
 
 /**
  * Class for search that use a priority queue.
