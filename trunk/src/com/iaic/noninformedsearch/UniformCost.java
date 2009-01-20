@@ -3,7 +3,8 @@
  */
 package com.iaic.noninformedsearch;
 import problem.Problema;
-import problema.Nodo;
+
+import com.iaic.problem.Node;
 import com.iaic.search.PrioritySearch;
 import com.iaic.search.SearchQueue;
 import java.util.Comparator;

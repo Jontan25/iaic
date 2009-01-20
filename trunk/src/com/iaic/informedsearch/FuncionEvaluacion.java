@@ -2,8 +2,8 @@
  * 
  */
 package com.iaic.informedsearch;
-import problema.Problema;
-import problema.Nodo;
+import com.iaic.problem.Node;
+import com.iaic.problem.Problem;
 
 /**
  * Interfaz para la función de evaluación del nodo mejor
@@ -14,5 +14,5 @@ import problema.Nodo;
  */
 public interface FuncionEvaluacion {
 
-	public Double obtenerValor(Problema p,Nodo n);
+	public Double obtenerValor(Problem p,Node n);
 }
