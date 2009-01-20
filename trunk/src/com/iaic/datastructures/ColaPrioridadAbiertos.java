@@ -14,7 +14,7 @@ import problema.Nodo;
  * @author alberto
  *
  */
-public class ColaPrioridadAbiertos implements EstructuraAbiertos {
+public class ColaPrioridadAbiertos implements OpenedStructure {
 
 	private PriorityQueue<Nodo> cola;
 	

@@ -11,7 +11,7 @@ import problema.Nodo;
  * @author alberto
  *
  */
-public class PilaAbiertos implements EstructuraAbiertos {
+public class PilaAbiertos implements OpenedStructure {
 
 	Vector<Nodo> pila;
 	
