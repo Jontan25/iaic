@@ -4,61 +4,57 @@
 package com.iaic.datastructures;
 
 import java.util.Vector;
-
+import java.util.Comparator;
+import java.util.PriorityQueue;
 import problema.Nodo;
 
 /**
- * @author alberto
+ * It's a priority queue for the expanded nodes but not visited yet.
+ * @authors jose, mario
  *
  */
-public class PilaAbiertos implements OpenedStructure {
+public class OpenedPriorityQueue implements OpenedStructure {
 
-	Vector<Nodo> pila;
+	private PriorityQueue<Nodo> cola;
 	
-	public PilaAbiertos() {
-		pila=new Vector<Nodo>();
-		pila.clear();
+	
+	public OpenedPriorityQueue(Comparator<Nodo> c) {
+		cola=new PriorityQueue<Nodo>(20,c);
+		cola.clear();
 	}
-	
 	/* (non-Javadoc)
 	 * @see estructurasDeDatos.EstructuraAbiertos#agregar(problema.Nodo)
 	 */
 	public boolean agregar(Nodo n) {
-		pila.insertElementAt(n, 0);
-		return true;
+		return cola.add(n);
 	}
 
 	/* (non-Javadoc)
 	 * @see estructurasDeDatos.EstructuraAbiertos#agregar(java.util.Vector)
 	 */
 	public boolean agregar(Vector<Nodo> v) {
-		Vector<Nodo> a=new Vector<Nodo>();
-		a.clear();
-		a.addAll(v);
-		a.addAll(pila);
-		pila=a;
-		return true;
+		return cola.addAll(v);
 	}
 
 	/* (non-Javadoc)
 	 * @see estructurasDeDatos.EstructuraAbiertos#esVacia()
 	 */
 	public boolean esVacia() {
-		return pila.isEmpty();
+		return cola.isEmpty();
 	}
 
 	/* (non-Javadoc)
 	 * @see estructurasDeDatos.EstructuraAbiertos#extraer()
 	 */
 	public Nodo extraer() {
-		return pila.remove(0);
+		return cola.poll();
 	}
 
 	/* (non-Javadoc)
 	 * @see estructurasDeDatos.EstructuraAbiertos#numNodos()
 	 */
 	public int numNodos() {
-		return pila.size();
+		return cola.size();
 	}
 
 }

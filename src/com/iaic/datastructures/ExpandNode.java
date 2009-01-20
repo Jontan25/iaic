@@ -13,9 +13,9 @@ import problema.Sucesor;
  * @author alberto
  *
  */
-public class ExpandeNodo {
+public class ExpandNode {
 	
-	public ExpandeNodo() {}
+	public ExpandNode() {}
 	
 	/**
 	 * Dado un problema con sus funciones, y un nodo de espacio
