@@ -22,7 +22,7 @@ public class SearchGraph extends SearchQueue {
 		closed=new HashSet<Object>();
 		closed.clear();
 	}
-	/**
+	/**  
 	 * Determina si el estado de un nodo está en cerrados
 	 * Tell us is the state of a node is in the closed structure.
 	 * @param n the node.
