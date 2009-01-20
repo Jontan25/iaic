@@ -8,12 +8,12 @@ package com.iaic.datastructures;
  * @author alberto
  *
  */
-public class Planeta {
+public class Planet {
 	int idplaneta;
 	boolean destino;
 	
-	public Planeta() {}
-	public Planeta(int i) {
+	public Planet() {}
+	public Planet(int i) {
 		idplaneta=i;destino=false;
 	}
 	
@@ -26,7 +26,7 @@ public class Planeta {
 	}
 	
 	public Object clone() {
-		Planeta clone = new Planeta(idplaneta);
+		Planet clone = new Planet(idplaneta);
 		if (destino) clone.hacerDestino();
 		return clone;
 	}

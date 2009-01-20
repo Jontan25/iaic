@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author alberto
  *
  */
-public class Grafo<E> {
-	/**  
+public class Graph<E> {
+	/**
 	 * Número máximo de nodos que tendrá el grafo.
 	 */
 	private final int MAX_NODOS=256;
@@ -25,7 +25,7 @@ public class Grafo<E> {
 	 * Dentro del Nodo (NodoGrafo) está el elemento, del tipo E, y la
 	 * distancia de este elemento al nodo 1.
 	 */
-	private ArrayList<LinkedList<NodoAdyacencia<E>>> listas;
+	private ArrayList<LinkedList<AdjacencyNode<E>>> listas;
 	/**
 	 * Una lista de los elementos que tenemos. Me parece que se necesita.
 	 */
@@ -39,7 +39,7 @@ public class Grafo<E> {
 	 */
 	private int maxElementos;
 	
-	public Grafo() {
+	public Graph() {
 		listas=null;numElementos=0;elementos=null;maxElementos=MAX_NODOS;
 	}
 	/**
@@ -48,8 +48,8 @@ public class Grafo<E> {
 	 * ninguna lista enlazada, por lo que 
 	 * @param i
 	 */
-	public Grafo(int i) {
-		listas= new ArrayList<LinkedList<NodoAdyacencia<E>>>(i);
+	public Graph(int i) {
+		listas= new ArrayList<LinkedList<AdjacencyNode<E>>>(i);
 		elementos=new ArrayList<E>(i);
 		numElementos=0;maxElementos=numElementos;
 	}
@@ -67,7 +67,7 @@ public class Grafo<E> {
 		if ((numElementos==maxElementos) || (elementos.contains(elem))) 
 			return false;
 		elementos.add(elem);
-		listas.add(new LinkedList<NodoAdyacencia<E>>());
+		listas.add(new LinkedList<AdjacencyNode<E>>());
 		numElementos++;
 		return true;		
 	}
@@ -85,11 +85,11 @@ public class Grafo<E> {
 		if (!elementos.contains(v1) || !elementos.contains(v2))
 			return false;
 		//añadimos la arista v1,v2
-		NodoAdyacencia<E> primero=new NodoAdyacencia<E>(v2,d);
+		AdjacencyNode<E> primero=new AdjacencyNode<E>(v2,d);
 		int indice=elementos.indexOf(v1);
 		listas.get(indice).add(primero);
 		//ahora añadimos la arista v2,v1
-		NodoAdyacencia<E> segundo=new NodoAdyacencia<E>(v1,d);
+		AdjacencyNode<E> segundo=new AdjacencyNode<E>(v1,d);
 		indice=elementos.indexOf(v2);
 		listas.get(indice).add(segundo);
 		return true;
@@ -99,7 +99,7 @@ public class Grafo<E> {
 	 * @param v El vértice del que se piden los adyacentes.
 	 * @return La lista.
 	 */
-	public LinkedList<NodoAdyacencia<E>> adyacentes(E v) {
+	public LinkedList<AdjacencyNode<E>> adyacentes(E v) {
 		int index=elementos.indexOf(v);
 		if (index==-1) return null;
 		if (listas.get(index).isEmpty()) return null;

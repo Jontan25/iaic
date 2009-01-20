@@ -9,7 +9,7 @@ package com.iaic.datastructures;
  * @author alberto
  *
  */
-public class NodoAdyacencia<T> {
+public class AdjacencyNode<T> {
 	/**
 	 * El elemento del grafo.
 	 */
@@ -21,14 +21,14 @@ public class NodoAdyacencia<T> {
 	/**
 	 * Constructora por defecto, deja el nodo nulo.
 	 */
-	public NodoAdyacencia() {
+	public AdjacencyNode() {
 		elemento=null;distancia=0;
 	}
 	/**
 	 * Inicia el nodo con un elemento, y la distancia a 0.
 	 * @param elem El elemento correspondiente.
 	 */
-	public NodoAdyacencia(T elem) {
+	public AdjacencyNode(T elem) {
 		elemento=elem;distancia=0;
 	}
 	/**
@@ -36,7 +36,7 @@ public class NodoAdyacencia<T> {
 	 * @param elem Elemento con el que se iniciará el nodo.
 	 * @param d Distancia del elemento.
 	 */
-	public NodoAdyacencia(T elem, int d) {
+	public AdjacencyNode(T elem, int d) {
 		elemento=elem;distancia=d;
 	}
 	/**
