@@ -17,34 +17,31 @@ public abstract class SearchQueue extends ExpandeNodo {
 
 	public SearchQueue(){}
 	/**
-	 * Esta función recibe un problema y una estructura de abiertos vacía
-	 * y comienza una búsqueda del estado objetivo. Comienza creando un
-	 * nodo con el estado inicial y metiéndolo en abiertos. A partir de
-	 * ahí, comienza un bucle en el que extrae nodos de abiertos, los
-	 * evalúa y en caso de no ser objetivo, los expande y mete a abiertos.
-	 * @param p Problema para el que se realiza la búsqueda. Se necesita
-	 * para poder hacer el test de evaluación de objetivos.
-	 * @param abiertos la estructura de nodos abiertos. En función de la 
-	 * búsqueda concreta, será una pila, cola, cola de prioridad...
-	 * @return Vector con los operadores aplicados desde el estado inicial
-	 * hasta el primer estado objetivo encontrado.
+	 * This function receive a problem and an opened structure and start a search
+	 * of the objective state.Begin creating a node in the inicial state and
+	 * add it to the opened structure. Then we take the node and see if it is
+	 * the objective node, in the wrong case, we expand his sons and add it to 
+	 * the opened structure.
+	 * @param p Problem for wich we make the search.
+	 * @param opened structure, it can be a stack, a queue...
+	 * @return Vector with the operators applied since the inicial state
+	 * up to the first objective state that we find.
 	 */
-	public Vector<String> buscar(Problema p,EstructuraAbiertos abiertos) {
-		Nodo nodoinicial=new Nodo(p.getEstadoInicial());
-		abiertos.agregar(nodoinicial);
-		//se añade el nodo inicial a abiertos.
-		while (!abiertos.esVacia()) {
-			Nodo act=abiertos.extraer();
-			if (p.esEstadoObjetivo(act.getEstado())) {
-				return act.caminoOperadores();
+	public Vector<String> search(Problem p,OpenedStructure opened) {
+		Node inicialnode=new Node(p.getInicialState());
+		opened.agregar(inicial);
+		while (!opened.isEmpty()) {
+			Node actual=opened.extract();
+			if (p.esEstadoObjetivo(actual.getState())) {
+				return actual.operatoPath();
 			}
-			//se extrae el siguiente nodo de abiertos
-			//si es objetivo, se acabó
-			expandirYAgregar(p,abiertos,act);
-			//y si no es objetivo, se generan los nodos hijos
-			//y se agregan a abiertos.
+			//we take the next node from the opened structure
+			//if it is objective, we finish
+			AddandExpand(p,opened,actual);
+			//if it is not objective we create the sons
+			//and we add it to the structure.
 		}
-		return new Vector<String>();//esto no debería pasar
+		return new Vector<String>();
 	}
 	
 	public abstract void AddandExpand(Problem p, OpenedStructure opened, Node n);
