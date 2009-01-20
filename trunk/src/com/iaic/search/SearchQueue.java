@@ -15,9 +15,9 @@ import java.util.Vector;
  * @author alberto
  *
  */
-public abstract class ColaBusqueda extends ExpandeNodo {
+public abstract class SearchQueue extends ExpandeNodo {
 
-	public ColaBusqueda(){}
+	public SearchQueue(){}
 	/**
 	 * Esta función recibe un problema y una estructura de abiertos vacía
 	 * y comienza una búsqueda del estado objetivo. Comienza creando un
