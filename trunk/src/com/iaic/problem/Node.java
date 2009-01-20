@@ -1,56 +1,51 @@
-/**
- * 
- */
+
 package com.iaic.problem;
 import java.util.Vector;
 
 /**
- * El nodo es la estructura que representa un nodo del árbol de
- * búsqueda. Ojo, del árbol de búsqueda, no el de estados. Esto
- * significa que puede haber nodos distintos con el mismo estado.
- * Esto ya dependerá de la búsqueda, y de los métodos de control
- * de repeticiones, ciclos etc.
- * Esta estructura solo contiene un estado asociado, una referencia
- * al nodo padre, y los datos sobre costes y operador necesarios.
- * @author alberto
+ * The node is the structure that represents a node of the search tree
+ * (not the state tree). There can be different nodes with the same state. 
+ * It depends on the uses search and the cycle control methods...
+ * This structure only contents an associated state, a reference to the
+ * father's node and the needed costs and operators.
+ * @author jose, mario
  *
  */
 public class Node {
 	/**
-	 * El estado del espacio de estados que representa el nodo.
+	 * The state of the state space that represents the node.
 	 */
-	private Object estado;
+	private Object state;
 	/**
-	 * Una referencia al nodo padre para los nodos desplegados.
-	 * Puede ser útil para la vuelta atrás o para resolver el
-	 * camino de la raiz a una solución.
+	 * A reference to the father's node for the deplyed nodes.
+	 * It can be useful for the back tracking.
 	 */
-	private Node padre;
+	private Node father;
 	/**
-	 * El nombre del operador por el que se ha llegado a este
-	 * estado. Nos puede servir tanto para saber el orden de
-	 * operadores aplicados como para evitar ciclos.
+	 * The name of the operator that brings to this state. 
+	 * It can be useful to know the order of the applied operators
+	 * and to avoid cycles.
 	 */
-	private String operador;
+	private String operator;
 	/**
-	 * El coste del camino hasta este nodo. g(n).
+	 * The cost of the way up this node g(n)
 	 */
-	private Double costeCamino;
+	private Double wayCost;
 	/**
-	 * Coste total de la raiz al nodo.
+	 * Total cost from root to node.
 	 */
-	private Double costeTotal;
+	private Double totalCost;
 	/**
-	 * La profundidad del nodo en el árbol de búsqueda.
+	 * The depth of the node in the search tree.
 	 */
-	private Integer profundidad;
+	private Integer depth;
 	
 	
 	public Node(Object e,Node p,String o,double c,double ct,int pr) {
-		estado=e;padre=p;operador=o;
-		costeCamino=new Double(c);
-		costeTotal=new Double(ct);
-		profundidad=new Integer(pr);
+		state=e;father=p;operator=o;
+		wayCost=new Double(c);
+		totalCost=new Double(ct);
+		depth=new Integer(pr);
 	}
 	
 	public Node(Object e,Node p,String o,double c,double ct) {
@@ -77,92 +72,86 @@ public class Node {
 	}
 	
 	/**
-	 * Devuelve un Vector con la lista de nodos desde la
-	 * raiz hasta el nodo actual, ambos incluidos, ordenada
-	 * por profundidad.
-	 * @return Vector con lista de nodos desde la raiz.
+	 * Returns a Vector with the list of nodes from root to actual node,
+	 * depth-sorted
+	 * @return a Vector with the list of nodes from the root
 	 */
-	public Vector<Node> camino() {
-		Vector<Node> nodos=new Vector<Node>();
-		nodos.clear();
+	public Vector<Node> way() {
+		Vector<Node> nodes=new Vector<Node>();
+		nodes.clear();
 		Node actual=this;
-		while (actual.getProfundidad()!=0) {
-			nodos.insertElementAt(actual,0);
-			actual=actual.getPadre();
+		while (actual.getDepth()!=0) {
+			nodes.insertElementAt(actual,0);
+			actual=actual.getFather();
 		}
-		nodos.insertElementAt(actual,0);
-		return nodos;
+		nodes.insertElementAt(actual,0);
+		return nodes;
 		
 	}
 	
-	public Vector<String> caminoOperadores() {
+	public Vector<String> wayOperators() {
 		Vector<String> opers=new Vector<String>();
 		opers.clear();
 		Node actual=this;
-		while (actual.getProfundidad()!=0) {
-			opers.insertElementAt(actual.getOperador(),0);
-			actual=actual.getPadre();
+		while (actual.getDepth()!=0) {
+			opers.insertElementAt(actual.getOperator(),0);
+			actual=actual.getFather();
 		}
 		return opers;
 	}
 	
 	/**
 	 * 
-	 * @return El valor de la profundidad del nodo en el 
-	 * árbol de búsqueda como entero.
+	 * @return The depth of the node in the search tree
 	 */
-	public int getProfundidad() {
-		return profundidad.intValue();
+	public int getDepth() {
+		return depth.intValue();
 	}
 	/**
 	 * 
-	 * @return El valor del coste del camino hasta este
-	 * nodo como flotante.g(n)
+	 * @return The cost of the way to this node. g(n)
 	 */
-	public double getCosteCamino() {
-		return costeCamino.doubleValue();
+	public double getWayCost() {
+		return wayCost.doubleValue();
 	}
 	/**
 	 * 
-	 * @return El valor del coste de la raiz al nodo,
-	 * en número flotante.
+	 * @return Cost from root to node (in double).
 	 */
-	public double getCosteTotal() {
-		return costeTotal.doubleValue();
+	public double getTotalCostD() {
+		return totalCost.doubleValue();
 	}
 	/**
 	 * 
-	 * @return El valor del coste desde la raiz hasta el nodo,
-	 * en Double.
+	 * @return Cost from root to the node
 	 */
-	public Double getCosteTotalD() {
-		return costeTotal;
+	public Double getTotalCost() {
+		return totalCost;
 	}
 	/**
 	 * 
-	 * @return Una referencia al nodo padre.
+	 * @return eference to the father's node.
 	 */
-	public Node getPadre() {
-		return padre;
+	public Node getFather() {
+		return father;
 	}
 	/**
 	 *
-	 * @return el nombre del operador por el que se ha llegado
-	 * al nodo. 
+	 * @return The name of the operator that brings to the node. 
 	 */
-	public String getOperador() {
-		return operador;
+	public String getOperator() {
+		return operator;
 	}
 	/**
 	 * 
-	 * @return El estado que almacena este nodo.
+	 * @return The state that stores this node.
 	 */
-	public Object getEstado() {
-		return estado;
+	public Object getState() {
+		return state;
 	}
 	
 	public String toString() {
-		return estado.toString();
+		return state.toString();
 	}
 	/*
 	public int compare(Nodo a,Nodo b) {
