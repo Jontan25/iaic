@@ -3,17 +3,15 @@
  */
 package com.iaic.search;
 
-import estructurasDeDatos.ExpandeNodo;
-import estructurasDeDatos.EstructuraAbiertos;
-import problema.Problema;
-import problema.Nodo;
+import datastructures.ExpandNode;
+import datastructures.OpenedStructure;
+import problem.Problem;
+import problem.Node;
 import java.util.Vector;
 
 /**
- * 
- * Esta clase es la encargada de comenzar y gestionar la búsqueda.
- * @author alberto
- *
+ * This class manage the search.
+ * @author mario
  */
 public abstract class SearchQueue extends ExpandeNodo {
 
@@ -49,5 +47,5 @@ public abstract class SearchQueue extends ExpandeNodo {
 		return new Vector<String>();//esto no debería pasar
 	}
 	
-	public abstract void expandirYAgregar(Problema p, EstructuraAbiertos abiertos, Nodo n);
+	public abstract void AddandExpand(Problem p, OpenedStructure opened, Node n);
 }
