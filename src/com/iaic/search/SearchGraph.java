@@ -3,9 +3,9 @@
  */
 package com.iaic.search;
 
-import problem.Node;
-import problem.Problem;
-import dataStructure.OpenedStructure;
+import com.iaic.problem.Node;
+import com.iaic.problem.Problem;
+import com.iaic.datastructures.OpenedStructure;
 import java.util.HashSet;
 import java.util.Vector;
 /**

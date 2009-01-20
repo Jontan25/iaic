@@ -34,11 +34,11 @@ public abstract class SearchQueue extends ExpandNode {
 		while (!opened.isEmpty()) {
 			Node act=opened.extract();
 			if (p.isAimState(act.getState())) {
-				return act.roadOperators();
+				return act.wayOperators();
 			}
 			//we take the next node from the opened structure
 			//if it is objective, we finish
-			AddandExpand(p,opened,actual);
+			AddandExpand(p,opened,act);
 			//if it is not objective we create the sons
 			//and we add it to the structure.
 		}
