@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  */
 public class Grafo<E> {
-	/**
+	/**  
 	 * Número máximo de nodos que tendrá el grafo.
 	 */
 	private final int MAX_NODOS=256;
