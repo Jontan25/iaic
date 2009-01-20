@@ -3,8 +3,8 @@
  */
 package com.iaic.search;
 
-import datastructures.ExpandNode;
-import datastructures.OpenedStructure;
+import com.iaic.datastructures.ExpandNode;
+import com.iaic.datastructures.OpenedStructure;
 import problem.Problem;
 import problem.Node;
 import java.util.Vector;
@@ -13,7 +13,7 @@ import java.util.Vector;
  * This class manage the search.
  * @author mario
  */
-public abstract class SearchQueue extends ExpandeNodo {
+public abstract class SearchQueue extends ExpandNode {
 
 	public SearchQueue(){}
 	/**
