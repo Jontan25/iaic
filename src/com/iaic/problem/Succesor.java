@@ -1,42 +1,38 @@
 package com.iaic.problem;
 /**
- * No es un nodo. Es algo previo. Es un sucesor que se crea al
- * desplegar un nodo extraído de la estructura de abiertos.
- * Solo contiene el estado y el operador aplicado.
- * @author alberto
+ * It's not a node. It's a succesor that is created when we
+ * deploy an extracted node from the opened structure.
+ * @author jose, mario
  *
  */
 public class Succesor {
 	/**
-	 * El estado del problema si generásemos el nodo.
-	 * OJO: no representa un nodo que estemos visitando ni que
-	 * vayamos a visitar; solo es una estructura intermedia entre
-	 * estado y nodo "oficial". 
+	 * The state of the problem
 	 */
-	private Object estado;
+	private Object state;
 	/**
-	 * El operador que tenemos que aplicar para llegar a este estado.
+	 * The operator that we have to apply for getting this state
 	 */
-	private String operador;
+	private String operator;
 	
 	public Succesor(Object e,String o) {
-		estado=e;operador=o;
+		state=e;operator=o;
 	}
 	public Succesor() {
 		this(null,"");
 	}
 	/**
 	 * 
-	 * @return El estado que representa.
+	 * @return The represented state.
 	 */
-	public Object getEstado() {
-		return estado;
+	public Object getState() {
+		return state;
 	}
 	/**
 	 * 
-	 * @return El operador que hay que tomar para obtener el estado.
+	 * @return The operator that we have to take to get the state.
 	 */
-	public String getOperador() {
-		return operador;
+	public String getOperator() {
+		return operator;
 	}
 }

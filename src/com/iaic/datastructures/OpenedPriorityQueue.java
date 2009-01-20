@@ -20,7 +20,7 @@ public class OpenedPriorityQueue implements OpenedStructure {
 		queue=new PriorityQueue<Node>(20,c);
 		queue.clear();
 	}
-¡
+
 	public boolean add(Node n) {
 		return queue.add(n);
 	}
