@@ -1,12 +1,10 @@
-/**
- * 
- */
+
 package com.iaic.datastructures;
 
 import java.util.Vector;
 import java.util.Comparator;
 import java.util.PriorityQueue;
-import problem.Node;
+import com.iaic.problem.Node;
 
 /**
  * It's a priority queue for the expanded nodes but not visited yet.
