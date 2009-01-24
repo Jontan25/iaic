@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 /**
  * This class represents a graph of elements of type E.
- * It's going tobe used for represent the graph of planets
+ * It's going to be used to represent the graph of planets
  * in the planets problem.
  * @author jose, mario
  *
