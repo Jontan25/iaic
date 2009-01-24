@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iaic.problems.OchoPuzzle;
+package com.iaic.problems.eightPuzzle;
 import java.io.*;
 /*
  *    ____________
@@ -60,7 +60,7 @@ public class ochoPuzzleEstado implements Cloneable {
 	 * @see java.lang.Object#clone()
 	 */
 	public Object clone() {
-		ochoPuzzleEstado clone=new ochoPuzzleEstado();
+		EightPuzzleState clone=new EightPuzzleState();
 		for (int y=0;y<3;y++)
 			for (int x=0;x<3;x++) 
 				clone.tablero[y][x]=tablero[y][x];				
@@ -202,7 +202,7 @@ public class ochoPuzzleEstado implements Cloneable {
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	public boolean equals(Object ee) {
-		ochoPuzzleEstado e=(ochoPuzzleEstado)ee;
+		EightPuzzleState e=(EightPuzzleState)ee;
 		boolean respuesta=true;
 		for (int i=0;i<3&&respuesta;i++)
 			for (int j=0;j<3&&respuesta;j++)

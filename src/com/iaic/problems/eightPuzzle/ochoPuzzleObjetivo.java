@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.iaic.problems.OchoPuzzle;
+package com.iaic.problems.eightPuzzle;
 
 import problema.interfacesFunciones.FuncionObjetivo;
 
@@ -18,10 +18,10 @@ public class ochoPuzzleObjetivo implements FuncionObjetivo {
 	 */
 	@Override
 	public boolean esObjetivo(Object candidato) {
-		ochoPuzzleEstado c=(ochoPuzzleEstado)candidato;
+		EightPuzzleState c=(EightPuzzleState)candidato;
 		//construimos un estado objetivo auxiliar
 		//(la constructora por defecto lo hace)
-		ochoPuzzleEstado objetivo=new ochoPuzzleEstado();
+		EightPuzzleState objetivo=new EightPuzzleState();
 		objetivo.hacerObjetivo();
 		return c.equals(objetivo);//y miramos si es igual.
 	}
