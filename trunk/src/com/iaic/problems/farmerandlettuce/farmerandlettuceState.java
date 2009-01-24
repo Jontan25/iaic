@@ -123,34 +123,40 @@ public class farmerandlettuceState implements Cloneable {
 	 * Operador para que cruce el granjero con la lechuga
 	 */
 	public void cruzaLechuga(){
-	    if (Lechuga == 1){
+	    if (Granjero_Bote == Lechuga == 1){
+	    	Granjero_Bote = 0;
 	    	Lechuga = 0;
 	    }
-	    if (Lechuga == 0){
+	    if (Granjero_Bote == Lechuga == 0){
+	    	Granjero_Bote = 1;
 	    	Lechuga = 1;
 	    }
 	}
 	
 	/**
-	 * Operador para que crucen 2 misioneros
+	 * Operador para que el granjero con la oveja
 	 */
 	public void cruzaOveja(){
-		if (Oveja == 1){
+		if (Granjero_Bote == Oveja == 1){
+			Granjero_Bote = 0;
 			Oveja = 0;
 	    }
-	    if (Oveja == 0){
+	    if (Granjero_Bote == Oveja == 0){
+	    	Granjero_Bote = 1;
 	    	Oveja = 1;
 	    }
 	}
 	
 	/**
-	 * Operador para que crucen 2 canibales
+	 * Operador para que el granjero con el lobo
 	 */
 	public void cruzaLobo(){
-		if (Lobo == 1){
+		if (Granjero_Bote == Lobo == 1){
+			Granjero_Bote = 0;
 			Lobo = 0;
 	    }
-	    if (Lobo == 0){
+	    if (Granjero_Bote == Lobo == 0){
+	    	Granjero_Bote = 1;
 	    	Lobo = 1;
 	    }
 	}
@@ -176,7 +182,12 @@ public class farmerandlettuceState implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzarSolo() {
-		return !peligrosidad()
+		if (Granjero_Bote == 1){
+			return (false == peligrosidad(Granjero_Bote-1,Lobo,Oveja,Lechuga);
+		}
+		if (Granjero_Bote == 0){
+			return (false == peligrosidad(Granjero_Bote+1,Lobo,Oveja,Lechuga);
+		}
 	}
 	
 	/**
@@ -187,7 +198,13 @@ public class farmerandlettuceState implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzarLechuga() {
-		
+		if (Granjero_Bote == Lechuga == 1){
+			return (false == peligrosidad(Granjero_Bote-1,Lobo,Oveja,Lechuga-1);
+		}
+		if (Granjero_Bote == Lechuga == 0){
+			return (false == peligrosidad(Granjero_Bote+1,Lobo,Oveja,Lechuga+1);
+		}
+		return false;
 	}
 	
 	/**
@@ -198,7 +215,13 @@ public class farmerandlettuceState implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzarOveja() {
-		
+		if (Granjero_Bote == Oveja == 1){
+			return (false == peligrosidad(Granjero_Bote-1,Lobo,Oveja-1,Lechuga);
+		}
+		if (Granjero_Bote == Oveja == 0){
+			return (false == peligrosidad(Granjero_Bote+1,Lobo,Oveja+1,Lechuga);
+		}
+		return false;
 	}
 	
 	/**
@@ -209,7 +232,13 @@ public class farmerandlettuceState implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzarLobo() {
-	
+		if (Granjero_Bote == Lobo == 1){
+			return (false == peligrosidad(Granjero_Bote-1,Lobo-1,Oveja,Lechuga);
+		}
+		if (Granjero_Bote == Lobo == 0){
+			return (false == peligrosidad(Granjero_Bote+1,Lobo+1,Oveja,Lechuga);
+		}
+		return false;
 	}
 		
 
