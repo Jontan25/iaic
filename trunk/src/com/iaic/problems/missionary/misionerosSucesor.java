@@ -32,38 +32,38 @@ public class misionerosSucesor implements FuncionSucesor {
 		
 		//Cruza 1 misionero
 		if (actual.puedoCruzarMisionero()) {
-			misionerosEstado CruzaM=(misionerosEstado)estadoActual.clone();
-			CruzaM.volcarGarrafa3en4();
+			misionerosEstado CruzaM=(misionerosEstado)actual.clone();
+			CruzaM.cruzaM();
 			sucesores.add(new Sucesor(CruzaM,CRUZAM));
 		} 
 		
 		//Cruza 1 canibal
-		if (estadoActual.puedoVolcar4en3()) {
-			garrafasEstado _4en3=(garrafasEstado)estadoActual.clone();
-			_4en3.volcarGarrafa4en3();
-			sucesores.add(new Sucesor(_4en3,OP4EN3));
+		if (actual.puedoCruzarCanibal()) {
+			misionerosEstado CruzaC=(misionerosEstado)actual.clone();
+			CruzaC.cruzaC();
+			sucesores.add(new Sucesor(CruzaC,CRUZAC));
 		} 
         
 		//Cruzan 2 misioneros
-		if (estadoActual.puedoLlenar3()) {
-			garrafasEstado ll3=(garrafasEstado)estadoActual.clone();
-			ll3.llenarGarrafa3();
-			sucesores.add(new Sucesor(ll3,OPLLENA3));
+		if (actual.puedoCruzar2Misioneros()) {
+			misionerosEstado CruzaMM=(misionerosEstado)actual.clone();
+			CruzaMM.cruzaMM();
+			sucesores.add(new Sucesor(CruzaMM,CRUZAMM));
 		}
         
 		//Cruzan 2 canibales
-		if (estadoActual.puedoLlenar4()) {
-			garrafasEstado ll4=(garrafasEstado)estadoActual.clone();
-			ll4.llenarGarrafa4();
-			sucesores.add(new Sucesor(ll4,OPLLENA4));
+		if (actual.puedoCruzar2Canibales()) {
+			misionerosEstado CruzaCC=(misionerosEstado)actual.clone();
+			CruzaCC.cruzaCC();
+			sucesores.add(new Sucesor(CruzaCC,CRUZACC));
 		}
 		
 		//Cruza 1 misionero y 1 canibal
 		if (estadoActual.puedoVaciar3()) {
-			garrafasEstado v3=(garrafasEstado)estadoActual.clone();
-			v3.vaciarGarrafa3();
-			sucesores.add(new Sucesor(v3,OPVACIA3));
-		}//para vaciar la garrafa de 3l
+			misionerosEstado CruzaMC=(misionerosEstado)actual.clone();
+			CruzaMC.cruzaMC();
+			sucesores.add(new Sucesor(CruzaMC,CRUZAMC));
+		}
 		return sucesores;
 	}
 
