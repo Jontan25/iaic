@@ -1,7 +1,11 @@
 /**
- * 
+ * El problema de 3-puzzle no siempre tiene solución. Muevas como
+ * muevas el hueco, solo se permite rotar las piezas, bien en sentido
+ * de las agujas del reloj o en sentido contrario, por lo que,
+ * si las piezas están cruzadas es imposible colocarlas en orden
+ * correcto. Esto lo diferencia del 8-puzzle.
  */
-package com.iaic.problems.OchoPuzzle;
+package com.iaic.problems.threePuzzle;
 
 import java.util.Vector;
 
@@ -12,7 +16,7 @@ import problema.interfacesFunciones.FuncionSucesor;
  * @author alberto
  *
  */
-public class ochoPuzzleSucesor implements FuncionSucesor {
+public class tresPuzzleSucesor implements FuncionSucesor {
 	private final String OPARRIBA="ARRIBA";
 	private final String OPABAJO="ABAJO";
 	private final String OPIZQUIERDA="IZQUIERDA";
@@ -24,27 +28,27 @@ public class ochoPuzzleSucesor implements FuncionSucesor {
 	public Vector<Sucesor> getSucesores(Object estado) {
 		Vector<Sucesor> sucesores=new Vector<Sucesor>();
 		sucesores.clear();
-		ochoPuzzleEstado estadoActual=(ochoPuzzleEstado)estado;
+		tresPuzzleEstado estadoActual=(tresPuzzleEstado)estado;
 		if (estadoActual.puedoMoverArriba()) {
-			ochoPuzzleEstado arriba=(ochoPuzzleEstado)estadoActual.clone();
+			tresPuzzleEstado arriba=(tresPuzzleEstado)estadoActual.clone();
 			arriba.moverArriba();
 			sucesores.add(new Sucesor(arriba,OPARRIBA));
 		} //para el movimiento hacia arriba
 		
 		if (estadoActual.puedoMoverAbajo()) {
-			ochoPuzzleEstado abajo=(ochoPuzzleEstado)estadoActual.clone();
+			tresPuzzleEstado abajo=(tresPuzzleEstado)estadoActual.clone();
 			abajo.moverAbajo();
 			sucesores.add(new Sucesor(abajo,OPABAJO));
 		}//para el movimiento hacia abajo
 
 		if (estadoActual.puedoMoverIzquierda()) {
-			ochoPuzzleEstado izquierda=(ochoPuzzleEstado)estadoActual.clone();
+			tresPuzzleEstado izquierda=(tresPuzzleEstado)estadoActual.clone();
 			izquierda.moverIzquierda();
 			sucesores.add(new Sucesor(izquierda,OPIZQUIERDA));
 		}//para el movimiento hacia la izquierda
 		
 		if (estadoActual.puedoMoverDerecha()) {
-			ochoPuzzleEstado derecha=(ochoPuzzleEstado)estadoActual.clone();
+			tresPuzzleEstado derecha=(tresPuzzleEstado)estadoActual.clone();
 			derecha.moverDerecha();
 			sucesores.add(new Sucesor(derecha,OPDERECHA));
 		} //y el cuarto operador, movimiento a la derecha

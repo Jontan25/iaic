@@ -1,11 +1,7 @@
 /**
- * El problema de 3-puzzle no siempre tiene solución. Muevas como
- * muevas el hueco, solo se permite rotar las piezas, bien en sentido
- * de las agujas del reloj o en sentido contrario, por lo que,
- * si las piezas están cruzadas es imposible colocarlas en orden
- * correcto. Esto lo diferencia del 8-puzzle.
+ * 
  */
-package com.iaic.problems.TresPuzzle;
+package com.iaic.problems.eightPuzzle;
 
 import problema.interfacesFunciones.FuncionHeuristica;
 
@@ -15,8 +11,8 @@ import problema.interfacesFunciones.FuncionHeuristica;
  * @author alberto
  *
  */
-public class tresPuzzleHeuristicaManhattan implements FuncionHeuristica {
-	//public tresPuzzleHeuristicaManhattan() {}
+public class ochoPuzzleHeuristicaManhattan implements FuncionHeuristica {
+	//public ochoPuzzleHeuristicaManhattan() {}
 	
 	private class coordenadas {
 		int x,y;
@@ -32,11 +28,11 @@ public class tresPuzzleHeuristicaManhattan implements FuncionHeuristica {
 	 */
 	@Override
 	public double valorHeuristico(Object estado) {
-		tresPuzzleEstado e=(tresPuzzleEstado)estado;
-		tresPuzzleEstado obj=new tresPuzzleEstado();
+		EightPuzzleState e=(EightPuzzleState)estado;
+		EightPuzzleState obj=new EightPuzzleState();
 		obj.hacerObjetivo();
 		double suma=0;
-		for (int i=0;i<=3;i++) {
+		for (int i=0;i<=8;i++) {
 			coordenadas ec=new coordenadas(),oc=new coordenadas();
 			//Integer xx=new Integer(-1),yy=new Integer(-1),xxx=new Integer(-1),yyy=new Integer(-1);
 			estaEn(i,e,ec);
@@ -47,10 +43,10 @@ public class tresPuzzleHeuristicaManhattan implements FuncionHeuristica {
 		return suma;
 	}
 	
-	private void estaEn(int i,tresPuzzleEstado e,coordenadas o) {
+	private void estaEn(int i,EightPuzzleState e,coordenadas o) {
 		boolean encontrado=false;
-		for (int x=0;x<2&&!encontrado;x++)
-			for (int y=0;y<2&&!encontrado;y++)
+		for (int x=0;x<3&&!encontrado;x++)
+			for (int y=0;y<3&&!encontrado;y++)
 				if (e.obtenerPieza(x, y)==i) {
 					o.setX(x);o.setY(y);encontrado=true;
 				}					

@@ -5,7 +5,7 @@
  * si las piezas están cruzadas es imposible colocarlas en orden
  * correcto. Esto lo diferencia del 8-puzzle.
  */
-package com.iaic.problems.TresPuzzle;
+package com.iaic.problems.threePuzzle;
 import java.io.*;
 /*
  *    _________
