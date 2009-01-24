@@ -111,7 +111,12 @@ public class farmerandlettuceState implements Cloneable {
 	 * Operador para que cruce el granjero solo
 	 */
 	public void cruzaSolo(){
-	
+	    if (Granjero_Bote == 1){
+	    	Granjero_Bote = 0;
+	    }
+	    if (Granjero_Bote == 0){
+	    	Granjero_Bote = 1;
+	    }
 	}
 	
 	/**
@@ -135,7 +140,13 @@ public class farmerandlettuceState implements Cloneable {
 		
 	}
 	
-
+    
+	/*
+	 * Evalua la condicion de peligrosidad
+	 */
+	public boolean peligrosidad(int nummis, int numcan){
+		return (((nummis<numcan)&&(nummis!=0))||((nummis>numcan)&&(nummis!=3)));
+	}
 	
 
 	
