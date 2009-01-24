@@ -242,6 +242,7 @@ public class missionaryState implements Cloneable {
 		return (e.getNumMisioneros()==NumMisioneros && e.getNumCanibales()==NumCanibales
 				&& e.getBote()==Bote);
 	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
@@ -253,6 +254,7 @@ public class missionaryState implements Cloneable {
 		codigo=Integer.parseInt(a);
 		return codigo;
 	}
+	
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#clone()
