@@ -114,7 +114,6 @@ public class misionerosEstado implements Cloneable {
 	 * Operador para que cruce 1 solo canibal
 	 */
 	public void cruzaC() {
-		if (((NumCanibales>0)&&(Bote==1))||((NumCanibales<3) && (Bote==0))){
 			if (Bote==1){
 				NumCanibales -=1;
 				Bote = 0;
@@ -123,7 +122,6 @@ public class misionerosEstado implements Cloneable {
 				NumCanibales +=1;
 				Bote = 1;
 			}
-		}	
 	}
 	
 	/**
@@ -205,7 +203,7 @@ public class misionerosEstado implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzar2Misioneros() {
-		return ((NumCanibales>0)&&(Bote==1))||((NumCanibales<3) && (Bote==0));
+		return ((NumMisioneros>1)&&(Bote==1))||((NumMisioneros<3) && (Bote==0));
 	}
 	
 	/**
@@ -216,7 +214,7 @@ public class misionerosEstado implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzar2Canibales() {
-		return ((NumCanibales>0)&&(Bote==1))||((NumCanibales<3) && (Bote==0));
+		return ((NumCanibales>1)&&(Bote==1))||((NumCanibales<3) && (Bote==0));
 	}
 	
 	/**
@@ -227,7 +225,8 @@ public class misionerosEstado implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzarMisioneroCanibal() {
-		return ((NumCanibales>0)&&(Bote==1))||((NumCanibales<3) && (Bote==0));
+		return ((NumCanibales>0)&&(NumCanibales>0)&&(Bote==1))||
+		((NumCanibales<3)&&(NumCanibales<3)&& (Bote==0));
 	}
 	
 
