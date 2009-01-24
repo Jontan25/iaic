@@ -13,13 +13,13 @@ import problema.interfacesFunciones.FuncionSucesor;
  */
 public class farmerandlettuceSuccesor implements FuncionSucesor {
 	/*
-	 * Los 5 operadores de este problema
+	 * Los 4 operadores de este problema
 	 */
-	private final String CRUZAM="Cruza 1 misionero";
-	private final String CRUZAC="Cruza 1 canibal";
-	private final String CRUZAMM="Cruzan 2 misioneros";
-	private final String CRUZACC="Cruzan 2 canibales";
-	private final String CRUZAMC="Cruzan 1 misionero y 1 canibal";
+	private final String CRUZASOLO="Cruza solo el granjero";
+	private final String CRUZALECHUGA="Cruzan el granjero y la lechuga";
+	private final String CRUZAOVEJA="Cruzan el granjero y la oveja";
+	private final String CRUZALOBO="Cruzan el granjero y el lobo";
+
 
 	/* (non-Javadoc)
 	 * @see problema.interfacesFunciones.FuncionSucesor#getSucesores(java.lang.Object)
@@ -28,41 +28,34 @@ public class farmerandlettuceSuccesor implements FuncionSucesor {
 	public Vector<Sucesor> getSucesores(Object estado) {
 		Vector<Sucesor> sucesores=new Vector<Sucesor>();
 		sucesores.clear();
-		misionerosEstado actual=(misionerosEstado)estado;
+		farmerandlettuceState actual=(farmerandlettuceState)estado;
 		
-		//Cruza 1 misionero
-		if (actual.puedoCruzarMisionero()) {
-			misionerosEstado CruzaM=(misionerosEstado)actual.clone();
-			CruzaM.cruzaM();
-			sucesores.add(new Sucesor(CruzaM,CRUZAM));
+		//Cruza el granjero solo
+		if (actual.puedoCruzarSolo()) {
+			farmerandlettuceState CruzaSolo=(farmerandlettuceState)actual.clone();
+			CruzaSolo.cruzaSolo();
+			sucesores.add(new Sucesor(CruzaSolo,CRUZASOLO));
 		} 
 		
-		//Cruza 1 canibal
-		if (actual.puedoCruzarCanibal()) {
-			misionerosEstado CruzaC=(misionerosEstado)actual.clone();
-			CruzaC.cruzaC();
-			sucesores.add(new Sucesor(CruzaC,CRUZAC));
+		//Cruza el granjero y la lechuga
+		if (actual.puedoCruzarLechuga()) {
+			farmerandlettuceState CruzaLechuga=(farmerandlettuceState)actual.clone();
+			CruzaLechuga.cruzaLechuga();
+			sucesores.add(new Sucesor(CruzaLechuga,CRUZALECHUGA));
 		} 
         
-		//Cruzan 2 misioneros
-		if (actual.puedoCruzar2Misioneros()) {
-			misionerosEstado CruzaMM=(misionerosEstado)actual.clone();
-			CruzaMM.cruzaMM();
-			sucesores.add(new Sucesor(CruzaMM,CRUZAMM));
+		//Cruzan el granjero y la oveja
+		if (actual.puedoCruzarOveja()) {
+			farmerandlettuceState CruzaOveja=(farmerandlettuceState)actual.clone();
+			CruzaOveja.cruzaOveja();
+			sucesores.add(new Sucesor(CruzaOveja,CRUZAOVEJA));
 		}
         
-		//Cruzan 2 canibales
-		if (actual.puedoCruzar2Canibales()) {
-			misionerosEstado CruzaCC=(misionerosEstado)actual.clone();
-			CruzaCC.cruzaCC();
-			sucesores.add(new Sucesor(CruzaCC,CRUZACC));
-		}
-		
-		//Cruza 1 misionero y 1 canibal
-		if (estadoActual.puedoVaciar3()) {
-			misionerosEstado CruzaMC=(misionerosEstado)actual.clone();
-			CruzaMC.cruzaMC();
-			sucesores.add(new Sucesor(CruzaMC,CRUZAMC));
+		//Cruzan el granjero y el lobo
+		if (actual.puedoCruzarLobo()) {
+			farmerandlettuceState CruzaLobo=(farmerandlettuceState)actual.clone();
+			CruzaLobo.cruzaLobo();
+			sucesores.add(new Sucesor(CruzaLobo,CRUZALOBO));
 		}
 		return sucesores;
 	}

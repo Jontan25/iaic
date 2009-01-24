@@ -19,161 +19,125 @@ public class farmerandlettuceState implements Cloneable {
 	 * inicial del juego.
 	 * CREO QUE NO LO NECESITAMOS PORQUE DEBERIA EMPEZAR SIEMPRE EL MISMO
 	 */
-	private final String ESTADOINICIAL="misioneros-estadoinicial.txt";
+	private final String ESTADOINICIAL="farmerandlettuce-inicialstate.txt";
+	
+	
 	
 	/**
-	 * El numero máximo de misioneros que puede haber en la orilla izquierda.
+	 * Indica donde se encuentra el granjero y el bote.
+	 * Tiene un rango de valores desde 0 a 1, con 1 para indicar la orilla izquierda
+	 * y 0 para indicar la orilla derecha.
 	 */
-	private final int MISIONEROSMAX=3;
+	private int Granjero_Bote;
 	
 	/**
-	 * El numero máximo de canibales que puede haber en la orilla izquierda.
+	 * Indica donde se encuentra el lobo.
+	 * Tiene un rango de valores desde 0 a 1, con 1 para indicar la orilla izquierda
+	 * y 0 para indicar la orilla derecha.
 	 */
-	private final int CANIBALESMAX=3;
+	private int Lobo;
 	
 	/**
-	 * Indica el numero de misioneros que hay en la orilla izquierda.
-	 * Tiene un rango de valores desde 0 a MISIONEROSMAX.
+	 * Indica donde se encuentra la oveja.
+	 * Tiene un rango de valores desde 0 a 1, con 1 para indicar la orilla izquierda
+	 * y 0 para indicar la orilla derecha.
 	 */
-	private int NumMisioneros;
-	/**
-	 * Indica el numero de canibales que hay en la orilla izquierda.
-	 * Tiene un rango de valores desde 0 a CANIBALESMAX.
-	 */
-	private int NumCanibales;
+	private int Oveja;
 	
 	/**
-	 * Indica la orilla en la que se encuentra el bote.
-	 * Tiene un rango de valores desde 0 a 1.
-	 * Con 0 para representar que el bote esta en la orilla derecha y 1 para
-	 * representar que el bote esta en la orilla izquierda.
+	 * Indica donde se encuentra la lechuga.
+	 * Tiene un rango de valores desde 0 a 1, con 1 para indicar la orilla izquierda
+	 * y 0 para indicar la orilla derecha.
 	 */
-	private int Bote;
+	private int Lechuga;
+	
 	
 	/**
 	 * La constructora por defecto crea el estado inicial.
 	 */
-	public garrafasEstado() {
-		NumMisioneros=3;NumCanibales=3;Bote=1;		
+	public granjeroylechugaEstado() {
+		Granjero_Bote=1;Lobo=1;Oveja=1;Lechuga=1;	
 	}
+	
 	/**
-	 * Convierte el estado en un estado objetivo. Un estado objetivo
-	 * es cualquiera en el que los tres misioneros y los tres canibales
-	 * estan en la orilla derecha, la posion del bote daria lo mismo, aunque ante
-	 * el ultimo movimiento deberia estar en la orilla derecha.
+	 * Convierte el estado en un estado objetivo. El estado objetivo
+	 * es aquel en el que el granjero, lobo, oveja y lechuga estan en el 
+	 * lado derecho del rio.
 	 */
 	public void hacerObjetivo() {
-		NumMisioneros=0;NumCanibales=0;Bote=0;
+		Granjero_Bote=0;Lobo=0;Oveja=0;Lechuga=0;
 	}
+	
 	/**
 	 * Comprueba si el estado es un estado objetivo o no.
 	 * @return True si es un estado objetivo; es decir,si el numero
 	 * de misioneros y canibales en la orilla izquierda es cero. False en caso contrario.
 	 */
 	public boolean esObjetivo() {
-		return NumMisioneros==0;NumCanibales==0;Bote==0;
+		return Granjero_Bote==0;Lobo==0;Oveja==0;Lechuga==0;
 	}
 	/**
 	 * Método para acceder al numero de misioneros que hay en la orilla izquierda.
 	 * @return NumMisioneros actual que hay en la orilla izquierda.
 	 */
-	public int getNumMisioneros() {
-		return NumMisioneros;
+	public int getGranjero_Bote() {
+		return Granjero_Bote;
 	}
 	/**
 	 * Método para acceder al numero de canibales que hay en la orilla izquierda.
 	 * @return NumCanibales actual que hay en la orilla izquierda.
 	 */
-	public int getNumCanibales() {
-		return NumCanibales;
+	public int getLobo() {
+		return Lobo;
 	}
 	
 	/**
 	 * Método para acceder al valor del bote y asi saber en que orilla esta.
 	 * @return Bote, valor que indica en que orilla esta el bote.
 	 */
-	public int getBote() {
-		return Bote;
+	public int getOveja() {
+		return Oveja;
 	}
 	
 	/**
-	 * Operador para que cruce 1 solo misionero
+	 * Método para acceder al valor del bote y asi saber en que orilla esta.
+	 * @return Bote, valor que indica en que orilla esta el bote.
 	 */
-	public void cruzaM(){
-			if (Bote==1){
-				NumMisioneros -=1;
-				Bote = 0;
-			}
-			if (Bote==0){
-				NumMisioneros +=1;
-				Bote = 1;
-			}
+	public int getLechuga() {
+		return Lechuga;
 	}
 	
 	/**
-	 * Operador para que cruce 1 solo canibal
+	 * Operador para que cruce el granjero solo
 	 */
-	public void cruzaC(){
-			if (Bote==1){
-				NumCanibales -=1;
-				Bote = 0;
-			}
-			if (Bote==0){
-				NumCanibales +=1;
-				Bote = 1;
-			}
+	public void cruzaSolo(){
+	
+	}
+	
+	/**
+	 * Operador para que cruce el granjero con la lechuga
+	 */
+	public void cruzaLechuga(){
+	
 	}
 	
 	/**
 	 * Operador para que crucen 2 misioneros
 	 */
-	public void cruzaMM(){
-			if (Bote==1){
-				NumCanibales -=1;
-				Bote = 0;
-			}
-			if (Bote==0){
-				NumCanibales +=1;
-				Bote = 1;
-			}
+	public void cruzaOveja(){
+	
 	}
 	
 	/**
 	 * Operador para que crucen 2 canibales
 	 */
-	public void cruzaCC(){
-			if (Bote==1){
-				NumCanibales -=1;
-				Bote = 0;
-			}
-			if (Bote==0){
-				NumCanibales +=1;
-				Bote = 1;
-			}
+	public void cruzaLobo(){
+		
 	}
 	
-	/**
-	 * Operador para que crucen 1 misionero y 1 canibal
-	 */
-	public void cruzaMC() {
-			if (Bote==1){
-				NumCanibales -=1;
-				Bote = 0;
-			}
-			if (Bote==0){
-				NumCanibales +=1;
-				Bote = 1;
-			}
-	}
+
 	
-	
-	/*
-	 * Evalua la condicion de peligrosidad
-	 */
-	public boolean peligrosidad(int nummis, int numcan){
-		return (((nummis<numcan)&&(nummis!=0))||((nummis>numcan)&&(nummis!=3)));
-	}
-	
+
 	
 	/**
 	 * Este método mira si se puede aplicar el operador de cruzaMisionero.
@@ -182,9 +146,8 @@ public class farmerandlettuceState implements Cloneable {
 	 * si el numero de misioneros en la orilla derecha es menor que 3 y el bote esta alli
 	 * y False en caso contrario.
 	 */
-	public boolean puedoCruzarMisionero() {
-		return (((NumMisioneros>0)&&(Bote==1))||((NumMisioneros<3) && (Bote==0))&&
-				((!peligrosidad(NumMisioneros-1,NumCanibales))||(!peligrosidad(NumMisioneros+1,NumCanibales));
+	public boolean puedoCruzarSolo() {
+		
 	}
 	
 	/**
@@ -194,8 +157,8 @@ public class farmerandlettuceState implements Cloneable {
 	 * si el numero de canibales en la orilla derecha es menor que 3 y el bote esta alli
 	 * y False en caso contrario.
 	 */
-	public boolean puedoCruzarCanibal() {
-		return ((NumCanibales>0)&&(Bote==1))||((NumCanibales<3) && (Bote==0));
+	public boolean puedoCruzarLechuga() {
+		
 	}
 	
 	/**
@@ -205,8 +168,8 @@ public class farmerandlettuceState implements Cloneable {
 	 * si el numero de canibales en la orilla derecha es menor que 3 y el bote esta alli
 	 * y False en caso contrario.
 	 */
-	public boolean puedoCruzar2Misioneros() {
-		return ((NumMisioneros>1)&&(Bote==1))||((NumMisioneros<3) && (Bote==0));
+	public boolean puedoCruzarOveja() {
+		
 	}
 	
 	/**
@@ -216,31 +179,19 @@ public class farmerandlettuceState implements Cloneable {
 	 * si el numero de canibales en la orilla derecha es menor que 3 y el bote esta alli
 	 * y False en caso contrario.
 	 */
-	public boolean puedoCruzar2Canibales() {
-		return ((NumCanibales>1)&&(Bote==1))||((NumCanibales<3) && (Bote==0));
-	}
+	public boolean puedoCruzarLobo() {
 	
-	/**
-	 * Este método mira si se puede aplicar el operador de cruzaCanibal.
-	 * @return True si el numero de canibales en la 
-	 * orilla izquierda es mayor que cero y el bote esta alli, o
-	 * si el numero de canibales en la orilla derecha es menor que 3 y el bote esta alli
-	 * y False en caso contrario.
-	 */
-	public boolean puedoCruzarMisioneroCanibal() {
-		return ((NumCanibales>0)&&(NumCanibales>0)&&(Bote==1))||
-		((NumCanibales<3)&&(NumCanibales<3)&& (Bote==0));
 	}
-	
+		
 
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	public boolean equals(Object o) {
-		misionerosEstado e=(misionerosEstado)o;
-		return (e.getNumMisioneros()==NumMisioneros && e.getNumCanibales()==NumCanibales
-				&& e.getBote()==Bote);
+		famerandlettuceState e=(famerandlettuceState)o;
+		return (e.getGranjero_Bote()==Granjero_Bote && e.getLobo()==Lobo
+				&& e.getOveja()==Oveja && e.getLechuga()==Lechuga);
 	}
 	/*
 	 * (non-Javadoc)
@@ -248,8 +199,8 @@ public class farmerandlettuceState implements Cloneable {
 	 */
 	public int hashCode() {
 		int codigo=0;
-		String a=Integer.toString(NumMisioneros)+Integer.toString(NumCanibales)+
-		       Integer.toString(Bote);
+		String a=Integer.toString(Granjero_Bote)+Integer.toString(Lobo)+
+		       Integer.toString(Oveja)+Integer.toString(Lechuga);
 		codigo=Integer.parseInt(a);
 		return codigo;
 	}
@@ -258,15 +209,16 @@ public class farmerandlettuceState implements Cloneable {
 	 * @see java.lang.Object#clone()
 	 */
 	public Object clone() {
-		misionerosEstado clone=new misionerosEstado();
-		clone.NumMisioneros=NumMisioneros;
-		clone.NumCanibales=NumCanibales;
-		clone.Bote=Bote;
+		famerandlettuceState clone=new famerandlettuceState();
+		clone.Granjero_Bote=Granjero_Bote;
+		clone.Lobo=Lobo;
+		clone.Oveja=Oveja;
+		clone.Lechuga=Lechuga;
 		return clone;		
 	}
 	
 	public String toString() {
-		return Integer.toString(NumMisioneros)+","+Integer.toString(NumCanibales)+","
-		   + Integer.toString(Bote);
+		return Integer.toString(Granjero_Bote)+","+Integer.toString(Lobo)+","
+		   + Integer.toString(Oveja) + Integer.toString(Lechuga);
 	}	
 }
