@@ -18,7 +18,7 @@ public class farmerandlettuceProblem extends Problema {
 	 * 
 	 * @param e El estado inicial del problema.
 	 */
-	public misionerosProblema(misionerosEstado e) {
-		super(e,new misionerosSucesor(),new misionerosObjetivo(),new FuncionCosteStandard(),null);
+	public farmerandlettuceProblem(farmerandlettuceState e) {
+		super(e,new farmerandlettuceSuccesor(),new farmerandlettuceObjective(),new FuncionCosteStandard(),null);
 	}
 }
