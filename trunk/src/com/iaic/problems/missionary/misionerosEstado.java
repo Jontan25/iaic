@@ -173,6 +173,14 @@ public class misionerosEstado implements Cloneable {
 	}
 	
 	
+	/*
+	 * Evalua la condicion de peligrosidad
+	 */
+	public boolean peligrosidad(int nummis, int numcan){
+		return (((nummis<numcan)&&(nummis!=0))||((nummis>numcan)&&(nummis!=3)));
+	}
+	
+	
 	/**
 	 * Este método mira si se puede aplicar el operador de cruzaMisionero.
 	 * @return True si el numero de misioneros en la 
@@ -181,7 +189,8 @@ public class misionerosEstado implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzarMisionero() {
-		return ((NumMisioneros>0)&&(Bote==1))||((NumMisioneros<3) && (Bote==0));
+		return (((NumMisioneros>0)&&(Bote==1))||((NumMisioneros<3) && (Bote==0))&&
+				((!peligrosidad(NumMisioneros-1,NumCanibales))||(!peligrosidad(NumMisioneros+1,NumCanibales));
 	}
 	
 	/**
