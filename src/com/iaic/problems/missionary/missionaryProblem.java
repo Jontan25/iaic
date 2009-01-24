@@ -18,7 +18,7 @@ public class missionaryProblem extends Problema {
 	 * 
 	 * @param e El estado inicial del problema.
 	 */
-	public misionerosProblema(misionerosEstado e) {
-		super(e,new misionerosSucesor(),new misionerosObjetivo(),new FuncionCosteStandard(),null);
+	public missionaryProblem(missionaryState e) {
+		super(e,new misionarySuccesor(),new missionaryObjective(),new FuncionCosteStandard(),null);
 	}
 }
