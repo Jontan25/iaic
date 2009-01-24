@@ -28,39 +28,39 @@ public class missionarySuccesor implements FuncionSucesor {
 	public Vector<Sucesor> getSucesores(Object estado) {
 		Vector<Sucesor> sucesores=new Vector<Sucesor>();
 		sucesores.clear();
-		misionerosEstado actual=(misionerosEstado)estado;
+		missionaryState actual=(missionaryState)estado;
 		
 		//Cruza 1 misionero
 		if (actual.puedoCruzarMisionero()) {
-			misionerosEstado CruzaM=(misionerosEstado)actual.clone();
+			missionaryState CruzaM=(missionaryState)actual.clone();
 			CruzaM.cruzaM();
 			sucesores.add(new Sucesor(CruzaM,CRUZAM));
 		} 
 		
 		//Cruza 1 canibal
 		if (actual.puedoCruzarCanibal()) {
-			misionerosEstado CruzaC=(misionerosEstado)actual.clone();
+			missionaryState CruzaC=(missionaryState)actual.clone();
 			CruzaC.cruzaC();
 			sucesores.add(new Sucesor(CruzaC,CRUZAC));
 		} 
         
 		//Cruzan 2 misioneros
 		if (actual.puedoCruzar2Misioneros()) {
-			misionerosEstado CruzaMM=(misionerosEstado)actual.clone();
+			missionaryState CruzaMM=(missionaryState)actual.clone();
 			CruzaMM.cruzaMM();
 			sucesores.add(new Sucesor(CruzaMM,CRUZAMM));
 		}
         
 		//Cruzan 2 canibales
 		if (actual.puedoCruzar2Canibales()) {
-			misionerosEstado CruzaCC=(misionerosEstado)actual.clone();
+			missionaryState CruzaCC=(missionaryState)actual.clone();
 			CruzaCC.cruzaCC();
 			sucesores.add(new Sucesor(CruzaCC,CRUZACC));
 		}
 		
 		//Cruza 1 misionero y 1 canibal
 		if (estadoActual.puedoVaciar3()) {
-			misionerosEstado CruzaMC=(misionerosEstado)actual.clone();
+			missionaryState CruzaMC=(missionaryState)actual.clone();
 			CruzaMC.cruzaMC();
 			sucesores.add(new Sucesor(CruzaMC,CRUZAMC));
 		}

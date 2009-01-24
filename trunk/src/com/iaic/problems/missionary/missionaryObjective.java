@@ -13,7 +13,7 @@ public class missionaryObjective implements FuncionObjetivo {
 	 */
 	@Override
 	public boolean esObjetivo(Object candidato) {
-		misionerosEstado a=(misionerosEstado)candidato;
+		missionaryState a=(missionaryState)candidato;
 		return a.esObjetivo(); //en este hay que hacer este truquito
 		//porque hay varios estados objetivos.
 	}
