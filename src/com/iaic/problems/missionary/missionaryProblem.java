@@ -13,7 +13,7 @@ import problemas.FuncionCosteStandard;
  * @author mario
  *
  */
-public class misionerosProblema extends Problema {
+public class missionaryProblem extends Problema {
 	/**
 	 * 
 	 * @param e El estado inicial del problema.

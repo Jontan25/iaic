@@ -6,7 +6,7 @@ import problema.interfacesFunciones.FuncionObjetivo;
 /**
  * @author mario
  */
-public class misionerosObjetivo implements FuncionObjetivo {
+public class missionaryObjective implements FuncionObjetivo {
 	/*
 	 * (non-Javadoc)
 	 * @see problema.interfacesFunciones.FuncionObjetivo#esObjetivo(java.lang.Object)
