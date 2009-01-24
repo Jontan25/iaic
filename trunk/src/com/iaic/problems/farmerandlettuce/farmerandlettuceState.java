@@ -123,29 +123,47 @@ public class farmerandlettuceState implements Cloneable {
 	 * Operador para que cruce el granjero con la lechuga
 	 */
 	public void cruzaLechuga(){
-	
+	    if (Lechuga == 1){
+	    	Lechuga = 0;
+	    }
+	    if (Lechuga == 0){
+	    	Lechuga = 1;
+	    }
 	}
 	
 	/**
 	 * Operador para que crucen 2 misioneros
 	 */
 	public void cruzaOveja(){
-	
+		if (Oveja == 1){
+			Oveja = 0;
+	    }
+	    if (Oveja == 0){
+	    	Oveja = 1;
+	    }
 	}
 	
 	/**
 	 * Operador para que crucen 2 canibales
 	 */
 	public void cruzaLobo(){
-		
+		if (Lobo == 1){
+			Lobo = 0;
+	    }
+	    if (Lobo == 0){
+	    	Lobo = 1;
+	    }
 	}
 	
     
 	/*
 	 * Evalua la condicion de peligrosidad
 	 */
-	public boolean peligrosidad(int nummis, int numcan){
-		return (((nummis<numcan)&&(nummis!=0))||((nummis>numcan)&&(nummis!=3)));
+	public boolean peligrosidad(int gb, int l, int o, int le){
+		return (
+				((gb==1)&&(l==o==0)) || ((gb==0)&&(l==o==1)) || 
+				((gb==1)&&(o==le==0) || ((gb==0)&&(o==le==1))
+		        );
 	}
 	
 
@@ -158,7 +176,7 @@ public class farmerandlettuceState implements Cloneable {
 	 * y False en caso contrario.
 	 */
 	public boolean puedoCruzarSolo() {
-		
+		return !peligrosidad()
 	}
 	
 	/**
