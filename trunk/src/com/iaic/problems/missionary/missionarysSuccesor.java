@@ -11,7 +11,7 @@ import problema.interfacesFunciones.FuncionSucesor;
 /**
  * @author mario
  */
-public class misionerosSucesor implements FuncionSucesor {
+public class missionarySuccesor implements FuncionSucesor {
 	/*
 	 * Los 5 operadores de este problema
 	 */

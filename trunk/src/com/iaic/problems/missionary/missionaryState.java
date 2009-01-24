@@ -13,7 +13,7 @@ import java.lang.Math;
 /**
  * @author mario
  */
-public class misionerosEstado implements Cloneable {
+public class missionaryState implements Cloneable {
 	/**
 	 * La ruta del fichero del que se leerá el estado
 	 * inicial del juego.
