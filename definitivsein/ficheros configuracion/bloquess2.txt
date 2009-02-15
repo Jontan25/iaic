@@ -1,0 +1,4 @@
+EstadoBloques
+(Q,C,A)
+*
+(P,A,B)

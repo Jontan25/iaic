@@ -1,0 +1,4 @@
+EstadoBloquesOr
+(B,Q,0,0)
+*
+(B,P,1,0)
