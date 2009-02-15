@@ -1,0 +1,20 @@
+EstadoLaberinto
+(9,8)
+* Posicion X,Posicion Y
+(0,0)
+* Paredes X
+(3,2)
+(3,3)
+(3,4)
+(3,5)
+(3,6)
+(4,1)
+(4,2)
+(4,3)
+* Paredes Y
+(4,4)
+(4,5)
+(4,6)
+(3,1)
+* Posicion X,Posicion Y Finales
+(8,6)
